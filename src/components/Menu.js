@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Menu from './Menu';
+import React, { useState } from 'react'
 
 let data = [
     {
@@ -75,14 +74,45 @@ let data = [
       desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
     },
   ]
-  
 
-const App = () => {
+const Menu = () => {
+
+    const [filteredData, setFilterData] = useState(data);
+    
+    const handleClick = (category)=> {
+        if(category==='all') {
+            setFilterData(data)
+        }else{
+            let filteredData = data.filter((result) => result.category === category);
+            setFilterData(filteredData);
+        }
+    }
+    console.log(filteredData)
   return (
     <div>
-        <Menu />
+        <h1>Our Menu</h1>
+        <div>
+            <button onClick={() => handleClick("all")}>All</button>
+            <button onClick={()=> handleClick("breakfast")}>Breakfast</button>
+            <button onClick={()=> handleClick("lunch")}>Lunch</button>
+            <button onClick={()=> handleClick("shakes")}>Shakes</button>
+        </div>
+        {filteredData.length>0 && filteredData.map((product, index) => (
+            <div key={index} style={{display: 'flex', justifyContent:"space-between", alignItems: "center", width: '300px', height:"200px", border:"1px solid red", margin:"10px"}}>
+                <div style={{width: "30%"}}>
+                    <img width={'100%'} height={'100%'} src = {product.image} alt={product.title} />
+                </div>
+                <div>
+                    <div style={{display: 'flex', justifyContent:"space-between", alignItems: "center"}}>
+                        <h6>{product.title}</h6>
+                        <p>$ {product.price}</p>
+                    </div>
+                    <p>{product.desc}</p>
+                </div>
+            </div>
+        ))}
     </div>
   )
 }
 
-export default App
+export default Menu
