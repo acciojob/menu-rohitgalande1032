@@ -92,10 +92,10 @@ const Menu = () => {
     <div>
         <h1>Our Menu</h1>
         <div>
-            <button onClick={() => handleClick("all")}>All</button>
-            <button onClick={()=> handleClick("breakfast")}>Breakfast</button>
-            <button onClick={()=> handleClick("lunch")}>Lunch</button>
-            <button onClick={()=> handleClick("shakes")}>Shakes</button>
+            <button id='filter-btn-0' onClick={() => handleClick("all")}>All</button>
+            <button id="filter-btn-1" onClick={()=> handleClick("breakfast")}>Breakfast</button>
+            <button id="filter-btn-2" onClick={()=> handleClick("lunch")}>Lunch</button>
+            <button id="filter-btn-3" onClick={()=> handleClick("shakes")}>Shakes</button>
         </div>
         {filteredData.length>0 && filteredData.map((product, index) => (
             <div key={index} style={{display: 'flex', justifyContent:"space-between", alignItems: "center", width: '300px', height:"200px", border:"1px solid red", margin:"10px"}}>

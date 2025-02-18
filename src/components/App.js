@@ -79,7 +79,7 @@ let data = [
 
 const App = () => {
   return (
-    <div>
+    <div id='main'>
         <Menu />
     </div>
   )
